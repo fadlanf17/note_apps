@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:note_apps/pages/home_page.dart';
 
-void main() {
+void main() async {
+  //init the hive
+  await Hive.initFlutter();
+  // open the box
+  var box = await Hive.openBox('myBox');
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  // Color primaryColor = Color(0xFF86A789);
   const MyApp({super.key});
 
   @override
@@ -14,8 +20,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
+        scaffoldBackgroundColor: Colors.yellow[200],
+        primarySwatch: Colors.yellow,
       ),
       home: const HomePage(),
     );
